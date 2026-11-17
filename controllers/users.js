@@ -1,4 +1,5 @@
-const users = require("./users.mock");
+const pokedex = require("./pokedex.mock");
+const users = [];
 
 function createUser(req, res) {
   const data = req.body;
@@ -9,12 +10,18 @@ function createUser(req, res) {
     pokedex: {
       id: data.id,
       pokemon: data.pokemon,
+      tipo1: data.tipo1,
+      tipo2: data.tipo2,
       peso: data.peso,
       altura: data.altura,
     },
   };
-  users.push(newUser, pokedex);
-  return res.status(201).json(newUser, pokedex);
+  users.push(newUser);
+  return res.status(201).json(newUser);
 }
 
-module.exports = { createUser };
+function listPokedex(req, res) {
+  return res.status(200).json(pokedex);
+}
+
+module.exports = { createUser, listPokedex };

@@ -18,7 +18,7 @@ routes.post("/users", createUser);
 
 // routes.get("/users", listUser);
 
-// routes.get("/users/pokedex", listPokedex);
+routes.get("/users/pokedex", listPokedex);
 
 // routes.get("/users/:id", findUserById);
 
