@@ -1,11 +1,9 @@
 const { Router } = require("express");
 const {
   createUser,
-  listUser,
   listPokedex,
-  findUserById,
-  deleteUser,
-  updateUser,
+  findPokemonById,
+  updateStatus,
 } = require("./controllers/users");
 
 const routes = Router();
@@ -16,14 +14,10 @@ routes.get("/", (req, res) => {
 
 routes.post("/users", createUser);
 
-// routes.get("/users", listUser);
+routes.get("/users/pokedex/", listPokedex);
 
-routes.get("/users/pokedex", listPokedex);
+routes.get("/users/pokedex/:id", findPokemonById);
 
-// routes.get("/users/:id", findUserById);
-
-// routes.delete("/users/:id", deleteUser);
-
-// routes.put("/users/:id", updateUser);
+ routes.put("/users/podedex/:id", updateStatus);
 
 module.exports = routes;
