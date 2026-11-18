@@ -2,7 +2,7 @@ const { Router } = require("express");
 const {
   createUser,
   listPokedex,
-  findPokemonById,
+  findPokemonByName,
   updateStatus,
 } = require("./controllers/users");
 
@@ -12,12 +12,10 @@ routes.get("/", (req, res) => {
   res.status(200).json("Bem-Vindo ao Poketech");
 });
 
-routes.post("/users", createUser);
-
 routes.get("/users/pokedex/", listPokedex);
 
-routes.get("/users/pokedex/:id", findPokemonById);
+routes.get("/users/pokedex/:pokemon", findPokemonByName);
 
- routes.put("/users/podedex/:id", updateStatus);
+routes.put("/users/pokedex/:id", updateStatus);
 
 module.exports = routes;
