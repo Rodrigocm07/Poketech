@@ -1359,6 +1359,12 @@ let pokedex = [
   },
 ];
 
-pokedex = pokedex.map((p) => ({ ...p, status: "disponível" }));
+const lendarios = ["144", "145", "146", "150", "151"];
+
+pokedex = pokedex.map((p) => ({
+  ...p,
+  status: "disponivel",
+  raridade: lendarios.includes(p.id) ? "L" : "C",
+}));
 
 module.exports = pokedex;

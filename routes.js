@@ -1,9 +1,9 @@
 const { Router } = require("express");
 const {
-  createUser,
   listPokedex,
   findPokemonByName,
   updateStatus,
+  SortPokemonByRarity,
 } = require("./controllers/users");
 
 const routes = Router();
@@ -14,8 +14,11 @@ routes.get("/", (req, res) => {
 
 routes.get("/users/pokedex/", listPokedex);
 
+routes.get("/users/pokedex/sort", SortPokemonByRarity);
+
 routes.get("/users/pokedex/:pokemon", findPokemonByName);
 
 routes.put("/users/pokedex/:id", updateStatus);
+
 
 module.exports = routes;

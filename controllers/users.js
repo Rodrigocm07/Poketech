@@ -44,6 +44,22 @@ function findPokemonByName(req, res) {
   return res.status(200).json(pokemonEncontrado);
 }
 
+function SortPokemonByRarity(req, res) {
+  const candidatos = pokedex.filter(
+    (p) => p.status === "disponivel"
+  );
 
+    if (candidatos.length === 0) {
+    return res.status(404).json({ erro: "Nenhum Pokémon disponível" });
+  }
 
-module.exports = { listPokedex, updateStatus, findPokemonByName };
+  const sorteado = candidatos[Math.floor(Math.random() * candidatos.length)];
+  return res.status(200).json(sorteado);
+}
+
+module.exports = {
+  listPokedex,
+  updateStatus,
+  findPokemonByName,
+  SortPokemonByRarity,
+};
