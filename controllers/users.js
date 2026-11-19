@@ -1,4 +1,6 @@
 const pokedex = require("./pokedex.mock");
+const pokemonSorted = require("./pokemonSorted");
+
 const users = []; //NOTA: Ainda pode ser feito como usuario predefinido, conversar com a turma.
 
 //LISTAR A POKEDEX
@@ -45,6 +47,7 @@ function findPokemonByName(req, res) {
 }
 
 function SortPokemonByRarity(req, res) {
+  
   const candidatos = pokedex.filter(
     (p) => p.status === "disponivel"
   );
@@ -54,12 +57,61 @@ function SortPokemonByRarity(req, res) {
   }
 
   const sorteado = candidatos[Math.floor(Math.random() * candidatos.length)];
+
+  pokemonSorted[0] = sorteado;
+
   return res.status(200).json(sorteado);
 }
+
+function getSortedPokemon(req, res) {
+  if (pokemonSorted.length === 0) {
+    return res.status(404).json({ erro: "Nenhum Pokémon sorteado" });
+  }
+  return res.status(200).json(pokemonSorted[0]);
+}
+
+// TRANSFORMAR "6,9 kg" PARA 6.9 PARA PODER COMPARAR, "0,7 m" VIRA 0.7 E "025" VIRA 25
+const numero = (texto) => parseFloat(String(texto).replace(",", "."));
+
+
+// COMPARA AS COISAS DO SECRETO COM O PALPITE, E RETORNA SE È IGUAL, MAIOR OU MENOR
+function compararNumero(palpite, secreto) {
+  const a = numero(palpite);
+  const b = numero(secreto);
+  if (a === b) return "igual";
+  return b > a ? "maior" : "menor";
+}
+
+// COMPARA O TIPO DO PALPITE COM O TIPO DO POKEMON SECRETO, E RETORNA SE É IGUAL, EXISTE OU ERRADO
+function compararTipo(tipoPalpite, tiposSecreto, posicao) {
+  if (tipoPalpite === tiposSecreto[posicao]) return "certo";
+  if (tiposSecreto.includes(tipoPalpite)) return "existe";
+  return "errado";
+}
+
+function compararPesos(palpite, secreto) {
+  return compararNumero(palpite, secreto);
+}
+
+function compararAlturas(palpite, secreto) {
+  return compararNumero(palpite, secreto);
+}
+
+function compararIndex(palpite, secreto) {
+  return compararNumero(palpite, secreto);
+}
+
+
 
 module.exports = {
   listPokedex,
   updateStatus,
   findPokemonByName,
   SortPokemonByRarity,
+  getSortedPokemon,
+  compararNumero,
+  compararTipo,
+  compararPesos,
+  compararAlturas,
+  compararIndex
 };
