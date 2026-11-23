@@ -2,14 +2,10 @@ const { Router } = require("express");
 const {
   listPokedex,
   findPokemonByName,
-  updateStatus,
-  SortPokemonByRarity,
-  getSortedPokemon,
-  compararNumero,
-  compararTipo,
-  compararPesos,
-  compararAlturas,
-  compararIndex
+  getUserPokedex,
+  startGame,
+  getGameState,
+  makeGuess,
 } = require("./controllers/users");
 
 const routes = Router();
@@ -18,16 +14,12 @@ routes.get("/", (req, res) => {
   res.status(200).json("Bem-Vindo ao Poketech");
 });
 
-routes.get("/users/pokedex/", listPokedex);
+routes.get("/pokedex", listPokedex);
+routes.get("/pokedex/:pokemon", findPokemonByName);
 
-routes.get("/users/pokedex/sort", SortPokemonByRarity);
-
-routes.get("/users/pokedex/sorted", getSortedPokemon);
-
-routes.get("/users/pokedex/:pokemon", findPokemonByName);
-
-routes.put("/users/pokedex/:id", updateStatus);
-
-
+routes.get("/users/:userId/pokedex", getUserPokedex);
+routes.post("/users/:userId/games", startGame);
+routes.get("/users/:userId/games/:gameId", getGameState);
+routes.post("/users/:userId/games/:gameId/guess", makeGuess);
 
 module.exports = routes;
