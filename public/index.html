@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101820" />
+  <title>Poketech — Termo Pokémon</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Poketech início">
+        <span class="brand-mark">P</span><span>poketech</span>
+      </a>
+      <div class="side-label">MENU</div>
+      <button class="nav-item active" data-view="game"><span>▦</span> Termo Pokémon</button>
+      <button class="nav-item" data-view="dex"><span>◉</span> Pokédex</button>
+      <div class="sidebar-bottom">
+        <div class="api-status"><i></i><span id="apiStatus">Conectando à API...</span></div>
+        <small>AMBIENTE DE TESTE</small>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><div class="eyebrow">CENTRAL DE TREINAMENTO</div><h1 id="pageTitle">Termo Pokémon</h1></div>
+        <div class="player-picker">
+          <span class="player-icon">♙</span>
+          <label for="playerSelect">JOGADOR</label>
+          <select id="playerSelect">
+            <option value="jogador1">Jogador 1</option>
+            <option value="jogador2">Jogador 2</option>
+          </select>
+        </div>
+      </header>
+
+      <section id="gameView" class="view">
+        <div class="intro-row">
+          <div><h2>Descubra o Pokémon secreto.</h2><p>Use as dicas para chegar à resposta em até cinco tentativas.</p></div>
+          <div class="attempt-pill"><b id="attemptsLeft">5</b><span>tentativas<br>restantes</span></div>
+        </div>
+        <div class="game-layout">
+          <section class="panel play-panel">
+            <div class="panel-heading"><div><span class="kicker">DESAFIO ATUAL</span><h3>Qual é o Pokémon?</h3></div><span class="live-dot">● AO VIVO</span></div>
+            <div class="search-wrap">
+              <span class="search-icon">⌕</span>
+              <input id="pokemonInput" type="text" placeholder="Digite o nome ou número do Pokémon..." autocomplete="off" list="pokemonOptions" disabled />
+              <datalist id="pokemonOptions"></datalist>
+              <button id="guessButton" class="primary-btn" disabled>Enviar palpite <span>→</span></button>
+            </div>
+            <div id="message" class="message" role="status">Inicie uma partida para começar a jogar.</div>
+            <div class="attempt-track" id="attemptTrack">
+              <span class="filled"></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="table-head"><span>SEU PALPITE</span><span>Nº</span><span>PESO</span><span>ALTURA</span><span>TIPOS</span></div>
+            <div id="guessHistory" class="guess-history">
+              <div class="empty-state"><div class="empty-ball">?</div><b>Nenhum palpite ainda</b><span>Seus resultados aparecerão aqui.</span></div>
+            </div>
+            <div class="game-actions"><button id="newGameButton" class="primary-btn">＋ Nova partida</button><span>Máximo de 5 palpites por partida</span></div>
+          </section>
+
+          <aside class="panel guide-panel">
+            <span class="kicker">COMO JOGAR</span><h3>Interprete as dicas</h3>
+            <div class="guide-item"><span class="guide-symbol good">✓</span><div><b>Correto</b><p>Você encontrou a informação certa.</p></div></div>
+            <div class="guide-item"><span class="guide-symbol exists">↔</span><div><b>Tipo existente</b><p>O tipo faz parte do Pokémon secreto, mas está em outra posição.</p></div></div>
+            <div class="guide-item"><span class="guide-symbol bad">×</span><div><b>Incorreto</b><p>A informação não corresponde ao Pokémon secreto.</p></div></div>
+            <div class="guide-item"><span class="guide-symbol arrow">↑↓</span><div><b>Maior ou menor</b><p>Indica se o valor secreto é maior ou menor que seu palpite.</p></div></div>
+            <div class="secret-card"><div class="secret-orbit">◉</div><span>OBJETIVO</span><b>Complete sua Pokédex</b><p>Acerte o Pokémon secreto para adicioná-lo à coleção do jogador selecionado.</p></div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="dexView" class="view hidden">
+        <div class="intro-row dex-intro"><div><h2>Sua coleção Pokémon.</h2><p>Os registros são individuais para cada jogador.</p></div></div>
+        <div class="stats-grid">
+          <div class="stat-card"><span>POKÉMON CAPTURADOS</span><b id="capturedCount">0</b></div>
+          <div class="stat-card"><span>POKÉMON DISPONÍVEIS</span><b id="remainingCount">151</b></div>
+          <div class="stat-card"><span>PROGRESSO DA COLEÇÃO</span><b id="progressText">0%</b><div class="progress"><i id="progressBar"></i></div></div>
+        </div>
+        <div class="dex-toolbar"><div><span class="kicker">COLEÇÃO</span><h3 id="dexHeading">Pokédex de Jogador 1</h3></div><input id="dexSearch" type="search" placeholder="Buscar Pokémon..." /></div>
+        <div id="dexGrid" class="dex-grid"></div>
+      </section>
+      <footer>POKETECH <span>•</span> PROJETO EM DESENVOLVIMENTO</footer>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
