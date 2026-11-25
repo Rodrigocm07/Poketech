@@ -1,0 +1,429 @@
+:root {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface-2: #334155;
+  --surface-3: #222e41;
+  --surface-4: #223147;
+  --select: rgb(23, 68, 131);
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --border: #475569;
+  --accent: #ef4444;
+  --green: #22c55e;
+  --yellow: #eab308;
+  --red: #ef4444;
+
+  --erro: #ff0000;
+  --certo: #32b100;
+  --parcial: #ffc400;
+
+  --border-2: #0055d4;
+}
+
+html[data-theme="light"] {
+  --bg: #f1f5f9;
+  --surface: #ffffff;
+  --surface-2: #e2e8f0;
+  --surface-3: #c5cad1;
+  --surface-4: rgb(192, 194, 201);
+  --select: rgb(169, 176, 184);
+  --text: #0f172a;
+  --muted: #475569;
+  --border: #cbd5e1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* tetse */
+
+.logo-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.logo-trigger:hover {
+  background: var(--surface-2);
+  border-color: var(--border);
+}
+
+.logo-trigger img {
+  height: 40px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.side-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.65);
+  z-index: 1100;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 250px;
+  max-width: 80vw;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  box-shadow: 12px 0 30px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+  z-index: 1200;
+}
+
+.side-menu.open {
+  transform: translateX(0);
+}
+
+.side-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.side-menu-logo {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
+.side-menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.side-menu-nav a {
+  display: block;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.side-menu-nav a:hover,
+.side-menu-nav a.active {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.topbar nav {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.topbar nav a {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+}
+
+.topbar nav a.active,
+.topbar nav a:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.status-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--yellow);
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+input,
+select,
+button {
+  font: inherit;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 0.55rem 0.8rem;
+  background: var(--surface);
+  color: var(--text);
+}
+
+button {
+  cursor: pointer;
+  background: var(--surface-2);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.message {
+  min-height: 1.4rem;
+  margin: 0.75rem 0;
+}
+
+.message.error {
+  color: #fca5a5;
+}
+
+.message.success {
+  color: #86efac;
+}
+
+/* TESTE */
+
+.logo-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.logo-trigger:hover {
+  background: var(--surface-2);
+  border-color: var(--border);
+}
+
+.logo-trigger img {
+  height: 40px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.side-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.65);
+  z-index: 1100;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 250px;
+  max-width: 80vw;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  box-shadow: 12px 0 30px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+  z-index: 1200;
+}
+
+.side-menu.open {
+  transform: translateX(0);
+}
+
+.side-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.side-menu-logo {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
+.side-menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.side-menu-nav a {
+  display: block;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.side-menu-nav a:hover,
+.side-menu-nav a.active {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+/* ---------------teste---------------------- */
+
+/* Garante que o modal fique escondido quando tiver .hidden */
+.hidden {
+  display: none !important;
+}
+
+/* Fundo escuro ocupando a tela inteira */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 9999;
+}
+
+/* Caixa principal do modal */
+.modal-box {
+  width: 100%;
+  max-width: 600px;
+  background: var(--bg);
+  color: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Cabeçalho */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.1rem;
+}
+
+.modal-close {
+  background: var(--surface-2);
+  color: var(--text);
+  border: none;
+  border-radius: 8px;
+  padding: 0.35rem 0.65rem;
+  cursor: pointer;
+}
+
+/* Divisão em duas colunas */
+.player-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.player-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1rem;
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px;
+  border-radius: 10px;
+  border-color: var(--surface-3);
+  cursor: pointer;
+  margin: 10px;
+}
+
+.player-option:hover {
+  background: var(--surface-4);
+}
+
+/* Destaque claro quando o jogador está selecionado */
+.player-option.selected {
+  background: var(--select);
+}
+
+.player-option img {
+  width: 120px;
+  height: 150px;
+  object-fit: contain;
+}
+
+@media (max-width: 520px) {
+  .player-split {
+    grid-template-columns: 1fr;
+  }
+
+  .player-option:first-child {
+    border-right: none;
+    border-bottom: 1px solid #334155;
+  }
+}

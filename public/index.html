@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/theme.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>PokeTech — Home</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="header-left">
+        <div class="menu">
+          <button
+            type="button"
+            id="openSideMenu"
+            class="logo-trigger"
+            aria-label="Abrir menu"
+          >
+            <img src="/assets/LogoPoketech.png" alt="Logo Poketech" />
+          </button>
+        </div>
+      </div>
+
+      <div class="search-container">
+        <input
+          id="dexSearch"
+          class="search-input"
+          type="search"
+          placeholder="Buscar Pokémon..."
+        />
+      </div>
+
+      <div class="header-actions">
+        <div class="theme-switch">
+          <button
+            id="themeToggle"
+            class="theme-button"
+            type="button"
+            aria-label="Alternar tema"
+          >
+            Tema claro
+          </button>
+        </div>
+
+        <button type="button" id="openPlayerModal" class="player-trigger">
+          Treinador (Masculino)
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section id="dexView" class="view-hidden">
+        <div class="intro-row dex-intro">
+          <div>
+            <h2 id="dexHeading">Sua coleção Pokémon.</h2>
+            <p>Os registros são individuais para cada jogador.</p>
+          </div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span>POKÉMON CAPTURADOS</span><b id="capturedCount">0</b>
+          </div>
+          <div class="stat-card">
+            <span>POKÉMON DISPONÍVEIS</span><b id="remainingCount">151</b>
+          </div>
+          <div class="stat-card">
+            <span>PROGRESSO DA COLEÇÃO</span><b id="progressText">0%</b>
+            <div class="progress"><i id="progressBar"></i></div>
+          </div>
+        </div>
+        <div id="dexGrid" class="dex-grid"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="about">
+          <img src="/assets/LogoPoketech.png" alt="Logo Poketech" />
+          <p>
+            Explore o universo Pokémon! Uma Pokédex desenvolvida para reunir
+            informações, curiosidades e dados sobre os Pokémon de uma maneira
+            simples e interativa.
+          </p>
+        </div>
+
+        <div class="project">
+          <h3>Sobre o projeto</h3>
+          <p>
+            Este site é um projeto escolar desenvolvido para fins exclusivamente
+            educacionais. Não possui finalidade comercial ou intenção de lucro.
+          </p>
+        </div>
+
+        <div class="institution">
+          <h3>
+            <GraduationCap size="{20}" />
+            Instituição
+          </h3>
+          <p>
+            Litoral Tech
+            <br />
+            SENAC RS — Tramandaí
+          </p>
+          <span>Projeto de estudos • 2026</span>
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <p>Desenvolvido com dedicação para fins educacionais.</p>
+
+        <p>
+          Poketech não possui vínculo oficial com a Nintendo, The Pokémon
+          Company ou Game Freak.
+        </p>
+      </div>
+
+      <div class="bottom">
+        <span>© 2026 Poketech — Todos os direitos reservados ao projeto.</span>
+        <span> Projeto acadêmico </span>
+      </div>
+    </footer>
+
+    <div
+      id="playerModal"
+      class="modal-backdrop hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+      <div class="modal-box">
+        <div class="modal-header">
+          <h2 id="modalTitle">Escolha seu personagem</h2>
+          <button
+            type="button"
+            id="closePlayerModal"
+            class="modal-close"
+            aria-label="Fechar"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="player-split">
+          <button type="button" class="player-option" data-player="jogador1">
+            <img src="./assets/Ash.png" alt="Jogador Masculino" />
+            <strong>Ash</strong>
+            <span>Jogador 1</span>
+          </button>
+
+          <button type="button" class="player-option" data-player="jogador2">
+            <img src="./assets/Serena.png" alt="Jogadora Feminina" />
+            <strong>Serena</strong>
+            <span>Jogador 2</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="sideMenuBackdrop" class="side-backdrop hidden"></div>
+
+    <aside id="sideMenu" class="side-menu" aria-hidden="true">
+      <div class="side-menu-header">
+        <img
+          src="/assets/LogoPoketech.png"
+          alt="Poketech"
+          class="side-menu-logo"
+        />
+        <button
+          type="button"
+          id="closeSideMenu"
+          class="modal-close"
+          aria-label="Fechar menu"
+        >
+          ✕
+        </button>
+      </div>
+
+      <nav class="side-menu-nav">
+        <a href="/index.html" data-page="index.html">Pokédex</a>
+        <a href="/jogo.html" data-page="jogo.html">Jogo</a>
+      </nav>
+    </aside>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/pokedex.js"></script>
+  </body>
+</html>
